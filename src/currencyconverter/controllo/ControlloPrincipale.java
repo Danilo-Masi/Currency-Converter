@@ -31,9 +31,10 @@ public class ControlloPrincipale {
             }
             Convertitore convertitore = Applicazione.getInstance().getConvertitore();
             double risultato = convertitore.convertiValute(valore, Costanti.EURO, comboFinale);
-            String scriviRisultato = valore + " euro " + "valgono: " + risultato + " " + comboFinale;
-            System.out.println(scriviRisultato);
-            String nuovaLabel = principale.labelRisultato().replaceAll(NAME, scriviRisultato);
+            String scriviPrimaParte = valore + " euro " + "uguale a ";
+            String scriviSecondaParte = risultato + " " + comboFinale;
+            principale.labelPrimaParte().setText(scriviPrimaParte);
+            principale.labelRisultato().setText(scriviSecondaParte);
         }
 
         public String convalida(double valore, String comboFinale) {

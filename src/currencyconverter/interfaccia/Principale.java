@@ -2,6 +2,7 @@ package currencyconverter.interfaccia;
 
 import currencyconverter.Applicazione;
 import currencyconverter.modello.Costanti;
+import javax.swing.JLabel;
 
 public class Principale extends javax.swing.JPanel {
     
@@ -36,8 +37,12 @@ public class Principale extends javax.swing.JPanel {
         return this.comboInserisciValutaFinale.getSelectedItem().toString();
     }
     
-    public String labelRisultato() {
-        return this.labelRisultato.toString();
+    public JLabel labelRisultato() {
+        return this.labelRisultato;
+    }
+    
+    public JLabel labelPrimaParte() {
+        return this.labelPrimaParteRisultato;
     }
     
     @SuppressWarnings("unchecked")
@@ -49,6 +54,7 @@ public class Principale extends javax.swing.JPanel {
         comboInserisciValutaFinale = new javax.swing.JComboBox<>();
         labelRisultato = new javax.swing.JLabel();
         bottoneConverti = new javax.swing.JButton();
+        labelPrimaParteRisultato = new javax.swing.JLabel();
 
         campoInserisciValore.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
@@ -56,12 +62,14 @@ public class Principale extends javax.swing.JPanel {
 
         comboInserisciValutaFinale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        labelRisultato.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        labelRisultato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelRisultato.setText("Risultato");
+        labelRisultato.setFont(new java.awt.Font("Dialog", 0, 25)); // NOI18N
+        labelRisultato.setText("0.000024 Bitcoin");
 
         bottoneConverti.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         bottoneConverti.setText("jButton1");
+
+        labelPrimaParteRisultato.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        labelPrimaParteRisultato.setText("1 euro uguale a ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,30 +77,37 @@ public class Principale extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelRisultato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(labelRisultato, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoInserisciValore, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboInserisciValutaIniziale, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(comboInserisciValutaFinale, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bottoneConverti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoInserisciValore, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bottoneConverti, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboInserisciValutaFinale, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboInserisciValutaIniziale, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelPrimaParteRisultato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoInserisciValore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboInserisciValutaIniziale, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboInserisciValutaFinale, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(bottoneConverti, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(labelPrimaParteRisultato, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(labelRisultato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoInserisciValore, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(comboInserisciValutaIniziale)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboInserisciValutaFinale, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(bottoneConverti, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,6 +117,7 @@ public class Principale extends javax.swing.JPanel {
     private javax.swing.JTextField campoInserisciValore;
     private javax.swing.JComboBox<String> comboInserisciValutaFinale;
     private javax.swing.JComboBox<String> comboInserisciValutaIniziale;
+    private javax.swing.JLabel labelPrimaParteRisultato;
     private javax.swing.JLabel labelRisultato;
     // End of variables declaration//GEN-END:variables
 }
