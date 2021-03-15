@@ -5,6 +5,7 @@ import currencyconverter.interfaccia.Principale;
 import currencyconverter.modello.Convertitore;
 import currencyconverter.modello.Costanti;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 
@@ -22,7 +23,8 @@ public class ControlloPrincipale {
         @Override
         public void actionPerformed(ActionEvent e) {
             Principale principale = Applicazione.getInstance().getPrincipale();
-            double valore = principale.getValoreCampo();
+            String valore = principale.getValoreCampo();
+            double valoreConvertito = Double.parseDouble(valore);
             String comboFinale = principale.getComboFinale();
             String errori = convalida(valore, comboFinale);
             if (!errori.isEmpty()) {
@@ -30,17 +32,25 @@ public class ControlloPrincipale {
                 return;
             }
             Convertitore convertitore = Applicazione.getInstance().getConvertitore();
-            double risultato = convertitore.convertiValute(valore, Costanti.EURO, comboFinale);
+            double risultato = convertitore.convertiValute(valoreConvertito, Costanti.EURO, comboFinale);
+            
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(5);
+            
             String scriviPrimaParte = valore + " euro " + "uguale a ";
-            String scriviSecondaParte = risultato + " " + comboFinale;
+            String scriviSecondaParte = df.format(risultato) + " " + comboFinale;
             principale.labelPrimaParte().setText(scriviPrimaParte);
             principale.labelRisultato().setText(scriviSecondaParte);
         }
 
-        public String convalida(double valore, String comboFinale) {
+        public String convalida(String valore, String comboFinale) {
             StringBuilder errori = new StringBuilder();
-            if (valore < 0) {
-                errori.append("Inserire un valore maggiore di 0").append("\n");
+            if (valore.isEmpty()) {
+                errori.append("Inserire un valore da convertire").append("\n");
+                double valoreConvertito = Double.parseDouble(valore);
+                if (valoreConvertito < 0) {
+                    errori.append("Inserire un valore maggiore di 0");
+                }
             } else if (comboFinale.isBlank()) {
                 errori.append("Inserire in quale valuta convertire").append("\n");
             }

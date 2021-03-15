@@ -2,7 +2,7 @@ package currencyconverter.modello;
 
 public class Convertitore {
 
-    public double convertiValute(double valore, String iniziale, String finale) {
+    public strictfp double convertiValute(double valore, String iniziale, String finale) {
         double nuovoValore = 0;
         if (finale.equals(Costanti.EURO)) {
             nuovoValore = valore;

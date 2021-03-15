@@ -6,8 +6,6 @@ import currencyconverter.controllo.ControlloPrincipale;
 import currencyconverter.interfaccia.Frame;
 import currencyconverter.interfaccia.Principale;
 import currencyconverter.modello.Convertitore;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;

@@ -27,10 +27,14 @@ public class Principale extends javax.swing.JPanel {
         this.comboInserisciValutaFinale.addItem(Costanti.DOLLARO);
     }
     
-    public double getValoreCampo() {
-        String campo = this.campoInserisciValore.getText();
-        double campoConverito = Double.parseDouble(campo);
-        return campoConverito;
+//    public double getValoreCampo() {
+//        String campo = this.campoInserisciValore.getText();
+//        double campoConverito = Double.parseDouble(campo);
+//        return campoConverito;
+//    }
+    
+    public String getValoreCampo() {
+        return this.campoInserisciValore.getText();
     }
     
     public String getComboFinale() {
